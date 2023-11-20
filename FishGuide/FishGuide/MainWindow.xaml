@@ -1,0 +1,30 @@
+﻿<Window x:Class="FishGuide.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FishGuide"
+        mc:Ignorable="d"
+        Title="Fishpedia" Width="500" Height="350" MinWidth="500" MinHeight="350">
+    <Grid Background="{StaticResource BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="320" Width="480">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Энциклопедия рыб" Style="{StaticResource ResourceKey=TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold"/>
+
+
+        <TextBox x:Name="Login" Grid.Row="1" Text="Логин" Style="{StaticResource TextBoxStyle}" />
+        <PasswordBox x:Name="Password" Grid.Row="2" Password="Пароль" Style="{StaticResource PasswordBoxStyle}" />
+
+
+        <Button x:Name="Auth" Grid.Row="3" Content="Войти" Style="{StaticResource ButtonStyle}" Margin="10,8,10,-48" Click="Auth_Click" />
+
+        <Button Grid.Row="2" Content="Нет аккаунта? Зарегистрируйтесь!" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="130,103,0,-93" Click="Button_Click"/>
+    </Grid>
+</Window>
+    

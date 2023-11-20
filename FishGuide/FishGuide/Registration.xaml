@@ -1,0 +1,25 @@
+﻿<Window x:Class="FishGuide.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            Title="Регистрация" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Регистрация" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+
+        <!-- Поля ввода для регистрации -->
+        <TextBox x:Name="LoginBox" Grid.Row="1" Text="Логин" Style="{StaticResource TextBoxStyle}" />
+        <PasswordBox x:Name="PassworBox" Grid.Row="2" Password="Пароль" Style="{StaticResource PasswordBoxStyle}" />
+        <TextBox x:Name="NicnknameBox" Grid.Row="3"  Text="Никнейм" Style="{StaticResource TextBoxStyle}" />
+
+        <!-- Кнопка для регистрации -->
+        <Button Grid.Row="4" Content="Зарегистрироваться" Style="{StaticResource ButtonStyle}" Click="Register_Click" />
+    </Grid>
+</Window>
+

@@ -1,0 +1,51 @@
+﻿<Window x:Class="FishGuide.AddFish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FishGuide"
+        mc:Ignorable="d"
+        Title="Добавить рыбу" Height="400" Width="500">
+    <Grid Background="{StaticResource BackgroundColor}" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="Имя:"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NameTextBox" Margin="5" Width="323" Height="40" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label Content="Снасть:"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TackleTextBox" Margin="5" Width="309" Height="50" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Label Content="Ареал обитания:"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="HabitatTextBox" Width="261" Height="51" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Label Content="Сезон:"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SeasonTextBox" Margin="5" Width="325" Height="41" FontSize="9" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <Label Content="О рыбе:"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="FishInfoTextBox" Margin="5" Width="315" Height="65" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <Button Style="{StaticResource ButtonStyle}" Content="Добавить" Margin="5" HorizontalAlignment="Left" Click="AddButton_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Отмена" Margin="5" HorizontalAlignment="Right" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

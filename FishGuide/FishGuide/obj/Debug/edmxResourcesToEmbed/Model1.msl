@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище FishGuideModelContainer" CdmEntityContainer="FishGuideEntities">
+    <EntitySetMapping Name="encyclopedia">
+      <EntityTypeMapping TypeName="FishGuideModel.encyclopedia">
+        <MappingFragment StoreEntitySet="encyclopedia">
+          <ScalarProperty Name="Encyclopedia_id" ColumnName="Encyclopedia_id" />
+          <ScalarProperty Name="Fish_Id" ColumnName="Fish_Id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fish">
+      <EntityTypeMapping TypeName="FishGuideModel.Fish">
+        <MappingFragment StoreEntitySet="Fish">
+          <ScalarProperty Name="Fish_id" ColumnName="Fish_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Tackle" ColumnName="Tackle" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="About" ColumnName="About" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FishGuideModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tackle">
+      <EntityTypeMapping TypeName="FishGuideModel.Tackle">
+        <MappingFragment StoreEntitySet="Tackle">
+          <ScalarProperty Name="Tackle_id" ColumnName="Tackle_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FishingType" ColumnName="FishingType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="FishGuideModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
