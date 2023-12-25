@@ -1,27 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FishGuideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="encyclopedia">
+<Schema Namespace="RecipeBookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Recipe">
     <Key>
-      <PropertyRef Name="Encyclopedia_id" />
+      <PropertyRef Name="Recipe_id" />
     </Key>
-    <Property Name="Encyclopedia_id" Type="Int32" Nullable="false" />
-    <Property Name="Fish_Id" Type="Int32" Nullable="false" />
-    <Property Name="User_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Fish" Relationship="Self.FK_encyclopedia_Fish" FromRole="encyclopedia" ToRole="Fish" />
-    <NavigationProperty Name="User" Relationship="Self.FK_encyclopedia_User" FromRole="encyclopedia" ToRole="User" />
-  </EntityType>
-  <EntityType Name="Fish">
-    <Key>
-      <PropertyRef Name="Fish_id" />
-    </Key>
-    <Property Name="Fish_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Recipe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Tackle" Type="Int32" />
-    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Season" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="About" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="encyclopedia" Relationship="Self.FK_encyclopedia_Fish" FromRole="Fish" ToRole="encyclopedia" />
-    <NavigationProperty Name="Tackle1" Relationship="Self.FK_Fish_Tackle" FromRole="Fish" ToRole="Tackle" />
+    <Property Name="Ingredients" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Difficulty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="About" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Recipe" FromRole="Recipe" ToRole="User" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -33,78 +22,36 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Tackle">
-    <Key>
-      <PropertyRef Name="Tackle_id" />
-    </Key>
-    <Property Name="Tackle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="FishingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Fish" Relationship="Self.FK_Fish_Tackle" FromRole="Tackle" ToRole="Fish" />
-  </EntityType>
   <EntityType Name="User">
     <Key>
-      <PropertyRef Name="User_id" />
+      <PropertyRef Name="User_Id" />
     </Key>
-    <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="encyclopedia" Relationship="Self.FK_encyclopedia_User" FromRole="User" ToRole="encyclopedia" />
+    <Property Name="Recipe_id" Type="Int32" />
+    <NavigationProperty Name="Recipe" Relationship="Self.FK_User_Recipe" FromRole="User" ToRole="Recipe" />
   </EntityType>
-  <Association Name="FK_encyclopedia_Fish">
-    <End Role="Fish" Type="Self.Fish" Multiplicity="1" />
-    <End Role="encyclopedia" Type="Self.encyclopedia" Multiplicity="*" />
+  <Association Name="FK_User_Recipe">
+    <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Fish">
-        <PropertyRef Name="Fish_id" />
+      <Principal Role="Recipe">
+        <PropertyRef Name="Recipe_id" />
       </Principal>
-      <Dependent Role="encyclopedia">
-        <PropertyRef Name="Fish_Id" />
+      <Dependent Role="User">
+        <PropertyRef Name="Recipe_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_encyclopedia_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="encyclopedia" Type="Self.encyclopedia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="User_id" />
-      </Principal>
-      <Dependent Role="encyclopedia">
-        <PropertyRef Name="User_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Fish_Tackle">
-    <End Role="Tackle" Type="Self.Tackle" Multiplicity="0..1" />
-    <End Role="Fish" Type="Self.Fish" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tackle">
-        <PropertyRef Name="Tackle_id" />
-      </Principal>
-      <Dependent Role="Fish">
-        <PropertyRef Name="Tackle" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="FishGuideEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="encyclopedia" EntityType="Self.encyclopedia" />
-    <EntitySet Name="Fish" EntityType="Self.Fish" />
+  <EntityContainer Name="RecipeBookEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Recipe" EntityType="Self.Recipe" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Tackle" EntityType="Self.Tackle" />
     <EntitySet Name="User" EntityType="Self.User" />
-    <AssociationSet Name="FK_encyclopedia_Fish" Association="Self.FK_encyclopedia_Fish">
-      <End Role="Fish" EntitySet="Fish" />
-      <End Role="encyclopedia" EntitySet="encyclopedia" />
-    </AssociationSet>
-    <AssociationSet Name="FK_encyclopedia_User" Association="Self.FK_encyclopedia_User">
+    <AssociationSet Name="FK_User_Recipe" Association="Self.FK_User_Recipe">
+      <End Role="Recipe" EntitySet="Recipe" />
       <End Role="User" EntitySet="User" />
-      <End Role="encyclopedia" EntitySet="encyclopedia" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Fish_Tackle" Association="Self.FK_Fish_Tackle">
-      <End Role="Tackle" EntitySet="Tackle" />
-      <End Role="Fish" EntitySet="Fish" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

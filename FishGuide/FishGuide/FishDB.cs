@@ -9,10 +9,10 @@ namespace FishGuide
 {
     public class FishDB
     {
-       FishGuideEntities entities = new FishGuideEntities();
+       RecipeBookEntities entities = new RecipeBookEntities();
         public static User FindUserByLogin(string login)
         {
-            using (var context = new FishGuideEntities())
+            using (var context = new RecipeBookEntities())
             {
                 // Поиск пользователя по логину
                 var user = context.User.FirstOrDefault(u => u.Login == login);

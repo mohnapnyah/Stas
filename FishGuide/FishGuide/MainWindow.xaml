@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FishGuide"
         mc:Ignorable="d"
-        Title="Fishpedia" Width="500" Height="350" MinWidth="500" MinHeight="350">
+        Title="RecipeBook" Width="500" Height="350" MinWidth="500" MinHeight="350">
     <Grid Background="{StaticResource BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="320" Width="480">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,7 +15,7 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Энциклопедия рыб" Style="{StaticResource ResourceKey=TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <TextBlock Text="Книга рецептов" Style="{StaticResource ResourceKey=TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold"/>
 
 
         <TextBox x:Name="Login" Grid.Row="1" Text="Логин" Style="{StaticResource TextBoxStyle}" />

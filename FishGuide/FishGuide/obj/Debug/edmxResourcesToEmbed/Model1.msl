@@ -1,29 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище FishGuideModelContainer" CdmEntityContainer="FishGuideEntities">
-    <EntitySetMapping Name="encyclopedia">
-      <EntityTypeMapping TypeName="FishGuideModel.encyclopedia">
-        <MappingFragment StoreEntitySet="encyclopedia">
-          <ScalarProperty Name="Encyclopedia_id" ColumnName="Encyclopedia_id" />
-          <ScalarProperty Name="Fish_Id" ColumnName="Fish_Id" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Fish">
-      <EntityTypeMapping TypeName="FishGuideModel.Fish">
-        <MappingFragment StoreEntitySet="Fish">
-          <ScalarProperty Name="Fish_id" ColumnName="Fish_id" />
+  <EntityContainerMapping StorageEntityContainer="Хранилище RecipeBookModelContainer" CdmEntityContainer="RecipeBookEntities">
+    <EntitySetMapping Name="Recipe">
+      <EntityTypeMapping TypeName="RecipeBookModel.Recipe">
+        <MappingFragment StoreEntitySet="Recipe">
+          <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Tackle" ColumnName="Tackle" />
-          <ScalarProperty Name="Area" ColumnName="Area" />
-          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+          <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
           <ScalarProperty Name="About" ColumnName="About" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="FishGuideModel.sysdiagrams">
+      <EntityTypeMapping TypeName="RecipeBookModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -33,22 +24,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tackle">
-      <EntityTypeMapping TypeName="FishGuideModel.Tackle">
-        <MappingFragment StoreEntitySet="Tackle">
-          <ScalarProperty Name="Tackle_id" ColumnName="Tackle_id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="FishingType" ColumnName="FishingType" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="FishGuideModel.User">
+      <EntityTypeMapping TypeName="RecipeBookModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

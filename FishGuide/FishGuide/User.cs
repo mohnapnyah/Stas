@@ -14,18 +14,12 @@ namespace FishGuide
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.encyclopedia = new HashSet<encyclopedia>();
-        }
-    
-        public int User_id { get; set; }
+        public int User_Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Nickname { get; set; }
+        public Nullable<int> Recipe_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<encyclopedia> encyclopedia { get; set; }
+        public virtual Recipe Recipe { get; set; }
     }
 }

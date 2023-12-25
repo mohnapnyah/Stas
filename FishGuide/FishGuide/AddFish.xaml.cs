@@ -29,7 +29,7 @@ namespace FishGuide
             try
             {
                 string name = NameTextBox.Text;
-                int tackle = Convert.ToInt32(TackleTextBox.Text);
+                string tackle = TackleTextBox.Text;
                 string habitat = HabitatTextBox.Text;
                 string season = SeasonTextBox.Text;
                 string fishInfo = FishInfoTextBox.Text;
@@ -41,26 +41,26 @@ namespace FishGuide
                 }
 
                 // Создание нового объекта Fish
-                Fish newFish = new Fish
+                Recipe newFish = new Recipe
                 {
                     Name = name,
-                    Tackle = tackle,
-                    Area = habitat,
-                    Season = season,
+                    Ingredients = tackle,
+                    Difficulty = habitat,
+                    Speed = season,
                     About = fishInfo
                 };
 
                 // Сохранение в базе данных
-                using (var dbContext = new FishGuideEntities()) // Замени на свой контекст базы данных
+                using (var dbContext = new RecipeBookEntities()) // Замени на свой контекст базы данных
                 {
-                    dbContext.Fish.Add(newFish);
+                    dbContext.Recipe.Add(newFish);
                     dbContext.SaveChanges();
                 }
 
                 // Закрытие диалогового окна
                 DialogResult = true;
             }
-            catch (Exception ex) { MessageBox.Show("Ошибка не введена снасть."; }
+            catch (Exception ex) { MessageBox.Show("Ошибка не введена снасть."); }
             }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

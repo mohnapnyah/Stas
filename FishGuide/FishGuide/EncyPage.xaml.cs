@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
@@ -29,19 +31,18 @@ namespace FishGuide
             this.user = currentUser;
             InitializeComponent();
             LoadFishList();
-            LoadTackleList();
-            if(currentUser.User_id == 4)
+            if(currentUser.User_Id == 1)
             {
-                AddFish.Visibility= Visibility.Visible;
+                AddFish.Visibility = Visibility.Visible;
+                DeleteRecipe.Visibility = Visibility.Visible;
             }
         }
         private void LoadFishList()
         {
-            using (var context = new FishGuideEntities())
+            using (var context = new RecipeBookEntities())
             {
                 // Загрузка списка рыб из базы данных
-                var fishList = context.Fish.ToList();
-
+                var fishList = context.Recipe.ToList();
                 // Привязка списка рыб к ListView
                 FishListView.ItemsSource = fishList;
             }
@@ -51,7 +52,7 @@ namespace FishGuide
         {
             // Сначало необходимо уставновить NuGet: QRCoder
             // Ссылка на XL таблицу
-            string soucer_xl = "prikormka.com"; //внутри кавычек надо вставить ссылку
+            string soucer_xl = "russianfood.com"; //внутри кавычек надо вставить ссылку
             // Создание переменной библиотеки QRCoder
             QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
             // Присваеваем значиения
@@ -77,57 +78,70 @@ namespace FishGuide
         {
             if (FishListView.SelectedItem != null)
             {
-                var selectedFish = (Fish)FishListView.SelectedItem;
-                Tackle tackle = GetTackleById((int)selectedFish.Tackle); // Метод, который выполняет запрос к базе данных
-
+                var selectedFish = (Recipe)FishListView.SelectedItem;
                 FishName.Text = selectedFish.Name;
-                ShowFishInfo(selectedFish, tackle);
+                ShowFishInfo(selectedFish);
             }
         }
-        private void ShowFishInfo(Fish fish, Tackle tackle)
+        private void ShowFishInfo(Recipe fish)
         {
             // Отображение информации о рыбе в TextBlock
-            FishInfoTextBlock.Text = $"Эффективная снасть: {tackle.Name}\nГде ловить: {fish.Area}\nСезон ловли: {fish.Season}\nОбщая информация: {fish.About}";
+            FishInfoTextBlock.Text = $"Ингридиенты: {fish.Ingredients}\nСложность: {fish.Difficulty} \nСкорость: {fish.Speed} \nОбщая информация: {fish.About}";
         }
 
-        private Tackle GetTackleById(int tackleId)
-        {
-            using (var context = new FishGuideEntities())
-            {
-                Tackle tackle = context.Tackle.FirstOrDefault(t => t.Tackle_id == tackleId);
-                // Здесь просто возвращаю заглушку, замени на реальную реализацию
-                return tackle;
-            }
-        }
-        private void LoadTackleList()
-        {
-            using (var context = new FishGuideEntities())
-            {
-                
-                var tackleList = context.Tackle.ToList();
-                TackleListView.ItemsSource = tackleList;
-            }
-        }
-
-        private void TackleListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (TackleListView.SelectedItem != null)
-            {
-                Tackle selectedTackle = (Tackle)TackleListView.SelectedItem;
-
-                TackleInfoTextBlock.Text = $"Название снасти: {selectedTackle.Name}\nМетод рыбалки: {selectedTackle.FishingType}";
-            }
-            else
-            {
-                TackleInfoTextBlock.Text = string.Empty;
-            }
-        }
+     
 
         private void AddFish_Click(object sender, RoutedEventArgs e)
         {
             AddFish addfish = new AddFish();
             addfish.ShowDialog();
         }
-    }
 
+        private void TackleListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FishListView.SelectedItem != null)
+            {
+                var selectedFish = (Recipe)FishListView.SelectedItem;
+                FishName.Text = selectedFish.Name;
+                ShowFishInfo(selectedFish);
+            }
+        }
+
+        private void DeleteRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            // Получение выбранного элемента
+            Recipe selectedFish = (Recipe)FishListView.SelectedItem;
+
+            if (selectedFish != null)
+            {
+                // Удаление из базы данных
+                using (var dbContext = new RecipeBookEntities()) // Замени на свой контекст базы данных
+                {
+                    var existingFish = dbContext.Recipe.Find(selectedFish.Recipe_id);
+
+                    if (existingFish != null)
+                    {
+                        dbContext.Recipe.Remove(existingFish);
+                        dbContext.SaveChanges();
+                    }
+                }
+                FishListView.SelectedItems.Remove(selectedFish);
+                UpdateLayout();
+            }
+            else
+            {
+                MessageBox.Show("Выберите рецепт для удаления.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                ICollectionView view = CollectionViewSource.GetDefaultView(FishListView.ItemsSource);
+                view.SortDescriptions.Clear();
+                view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+                view.Refresh();
+            }
+        }
+    }
 }

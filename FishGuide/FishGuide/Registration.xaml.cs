@@ -27,7 +27,7 @@ namespace FishGuide
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new FishGuideEntities())
+            using (var context = new RecipeBookEntities())
             {
                 var newUser = new User
                 {

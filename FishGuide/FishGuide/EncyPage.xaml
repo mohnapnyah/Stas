@@ -7,59 +7,35 @@
         mc:Ignorable="d"
         Title="EncyPage" Height="450" Width="800">
     <TabControl>
-        <TabItem Header="Энциклопедия рыб">
+        <TabItem Header="Книга рецептов">
             <Grid Background="{StaticResource BackgroundColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Левый блок: список рыб -->
-                <ListView x:Name="FishListView" Grid.Column="0" Margin="10" SelectionChanged="FishListView_SelectionChanged">
-                    <!-- Колонки для отображения данных о рыбе -->
+                <!-- Левый блок: список рецептов -->
+                    <ListView x:Name="FishListView" Grid.Column="0" Margin="10" SelectionChanged="FishListView_SelectionChanged">
+                        <!-- Колонки для отображения данных о рецепте -->
+
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="120"/>
-                            <!-- Добавь дополнительные колонки по необходимости -->
+                            <GridViewColumn Header="Блюда" DisplayMemberBinding="{Binding Name}" Width="120"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
-
-                <!-- Правый блок: информация о рыбе -->
+                <Button MinWidth="10" MinHeight="10" Style="{StaticResource ButtonStyle}" Margin="102,10,0,367" Content="A" FontSize="5" HorizontalAlignment="Center" Width="31" Click="Button_Click" VerticalAlignment="Top"/>
+                    <!-- Правый блок: информация о блюде -->
                 <StackPanel Grid.Column="1" Margin="10">
-                    <TextBlock x:Name="FishName" Text="Название рыбы" Style="{StaticResource TextBlockStyle}" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="FishName" Text="Назвавание блюда" Style="{StaticResource TextBlockStyle}" Margin="0,0,0,10"/>
                     <TextBlock x:Name="FishInfoTextBlock" TextWrapping="Wrap" FontFamily="Times New Roman" FontSize="18"/>
                 </StackPanel>
-                <Button x:Name="AddFish" Style="{StaticResource ButtonStyle}" Grid.Column="1" Content="Добавить рыбов" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Width="168" Height="36" FontSize="9" Click="AddFish_Click" Visibility="Hidden"/>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Снасти">
-            <Grid Background="{StaticResource BackgroundColor}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Левый блок: список рыб -->
-                <ListView x:Name="TackleListView" Grid.Column="0" Margin="10" SelectionChanged="TackleListView_SelectionChanged">
-                    <!-- Колонки для отображения данных о рыбе -->
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Название снасти " DisplayMemberBinding="{Binding Name}" Width="120"/>
-                            <!-- Добавь дополнительные колонки по необходимости -->
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
-                <!-- Правый блок: информация о рыбе -->
-                <StackPanel Grid.Column="1" Margin="10">
-                    <TextBlock x:Name="TackleName" Text="Название снасти" Style="{StaticResource TextBlockStyle}" Margin="0,0,0,10"/>
-                    <TextBlock x:Name="TackleInfoTextBlock" TextWrapping="Wrap" FontFamily="Times New Roman" FontSize="18"/>
-                </StackPanel>
+                <Button x:Name="AddFish" Style="{StaticResource ButtonStyle}" Grid.Column="1" Content="Добавить рецепт" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Width="168" Height="36" FontSize="9" Click="AddFish_Click" Visibility="Hidden"/>
+                <Button x:Name="DeleteRecipe" Style="{StaticResource ButtonStyle}" Grid.Column="1" Content="Удалить рецепт" HorizontalAlignment="Left" Margin="43,329,0,0" VerticalAlignment="Top" Width="168" Height="36" FontSize="9"  Visibility="Hidden" Click="DeleteRecipe_Click"/>
             </Grid>
         </TabItem>
 
-        <TabItem  Header="Магазин" Loaded="TabItem_Loaded">
+        <TabItem  Header="Наш сайт" Loaded="TabItem_Loaded">
             <Image x:Name="imageQr" Height="300" Width="300"></Image>
         </TabItem>
     </TabControl>

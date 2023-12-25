@@ -13,10 +13,10 @@ namespace FishGuide
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FishGuideEntities : DbContext
+    public partial class RecipeBookEntities : DbContext
     {
-        public FishGuideEntities()
-            : base("name=FishGuideEntities")
+        public RecipeBookEntities()
+            : base("name=RecipeBookEntities")
         {
         }
     
@@ -25,10 +25,8 @@ namespace FishGuide
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<encyclopedia> encyclopedia { get; set; }
-        public virtual DbSet<Fish> Fish { get; set; }
+        public virtual DbSet<Recipe> Recipe { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tackle> Tackle { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

@@ -19,27 +19,27 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Content="Имя:"/>
+            <Label Content="Название блюда:"/>
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NameTextBox" Margin="5" Width="323" Height="40" TextAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label Content="Снасть:"/>
+            <Label Content="Ингридиенты:"/>
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TackleTextBox" Margin="5" Width="309" Height="50" TextAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Label Content="Ареал обитания:"/>
+            <Label Content="Сложность готовки:"/>
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="HabitatTextBox" Width="261" Height="51" TextAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Label Content="Сезон:"/>
+            <Label Content="Cкорость готовки:"/>
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SeasonTextBox" Margin="5" Width="325" Height="41" FontSize="9" TextAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <Label Content="О рыбе:"/>
+            <Label Content="Метод приготовления:"/>
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="FishInfoTextBox" Margin="5" Width="315" Height="65" TextAlignment="Center"/>
         </StackPanel>
 
