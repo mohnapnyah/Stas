@@ -1,0 +1,92 @@
+﻿@page "/cabinet"
+@using Blazorise
+@using Blazorise.Bootstrap
+@using Blazorise.Icons.FontAwesome
+@using PoverkaEZ.Data
+@using Blazorise.DataGrid
+@inject NavigationManager Navigation
+@inject UserSingleton UserSingleton
+
+<PageTitle>Личный кабинет</PageTitle>
+
+<div class="container">
+    <h3>Личный кабинет</h3>
+
+    @if (UserSingleton.IsAuthenticated)
+    {
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <InputText id="username" @bind-Value="UserSingleton.CurrentUser.Username" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <InputText id="name" @bind-Value="UserSingleton.CurrentUser.Name" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="telegram">Телеграм:</label>
+            <InputText id="telegram" @bind-Value="UserSingleton.CurrentUser.Telegram" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Номер телефона:</label>
+            <InputText id="phone" @bind-Value="UserSingleton.CurrentUser.Phone" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Адрес:</label>
+            <InputText id="address" @bind-Value="UserSingleton.CurrentUser.Address" class="form-control" readonly />
+        </div>
+
+        <Button Color="Color.Primary" Clicked="SubmitRequest">Оставить заявку на поверку</Button>
+
+        <h3>Мои заявки</h3>
+
+        <DataGrid TItem="Request" Data="UserRequests">
+            <DataGridColumns>
+                <DataGridColumn TItem="Request" Field="@nameof(Request.dateTime)" Caption="Дата" />
+                <DataGridColumn TItem="Request" Field="@nameof(Request.status)" Caption="Статус заявки" />
+            </DataGridColumns>
+        </DataGrid>
+    }
+    else
+    {
+        <Blazorise.Alert Color="Color.Danger" Dismissable="true">
+            Пожалуйста, авторизуйтесь для доступа к личному кабинету.
+        </Blazorise.Alert>
+        <a href="/login" class="btn btn-primary">Войти</a>
+    }
+</div>
+
+@code {
+    private List<Request> UserRequests { get; set; } = new List<Request>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!UserSingleton.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/app");
+            return;
+        }
+
+        MD mD = new MD();
+        User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
+
+        if (user != null)
+        {
+            UserSingleton.CurrentUser = user;
+            UserRequests = mD.FindRequestsByUser(UserSingleton.CurrentUser.Username);
+        }
+        else
+        {
+            Navigation.NavigateTo("/login");
+        }
+    }
+
+    private void SubmitRequest()
+    {
+        // Логика отправки заявки на поверку
+        Navigation.NavigateTo("request");
+    }
+}

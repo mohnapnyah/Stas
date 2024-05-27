@@ -15,7 +15,7 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Книга рецептов" Style="{StaticResource ResourceKey=TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <TextBlock Text="Словарик для пожилых" Style="{StaticResource ResourceKey=TextBlockStyle}" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold"/>
 
 
         <TextBox x:Name="Login" Grid.Row="1" Text="Логин" Style="{StaticResource TextBoxStyle}" />

@@ -1,0 +1,27 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@inject NavigationManager Navigation;
+
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Welcome)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(Welcome)">
+            <p>Страница не найдена</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+<h1>Добро пожаловать на сайт для заявок</h1>
+
+<p>Для оставления заявки на поверку счетчиков, <button @onclick="GoToApplicationForm">нажмите здесь</button>.</p>
+
+@code {
+    private void GoToApplicationForm()
+    {
+        Navigation.NavigateTo($"application");
+    }
+}

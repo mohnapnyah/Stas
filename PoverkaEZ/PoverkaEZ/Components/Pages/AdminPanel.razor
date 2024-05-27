@@ -1,0 +1,77 @@
+﻿@page "/admin"
+@namespace PoverkaEZ
+@inject NavigationManager Navigation
+@using PoverkaEZ.Data
+@using PoverkaEZ.Components.Pages
+@using Blazorise
+@using Blazorise.DataGrid
+@using Blazorise.Bootstrap
+@using Blazorise.Icons.FontAwesome
+@using Blazorise.Components
+<h3>Панель администратора</h3>
+<Tabs SelectedTab="@selectedTab" OnSelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="requests">Заявки</Tab>
+        <Tab Name="userManagment">Сотрудники</Tab>
+        <Tab Name="messages">Пользователи</Tab>
+    </Items>
+    <Content>
+        <TabPanel Name="requests">
+            <p>Здесь отображаются все заявки</p>
+            <DataGrid TItem="Request" Data="@requests" AutoGenerateColumns="false" Striped="true" Hoverable="true">
+                <DataGridCommandColumn TItem="Request">
+                    <DataGridCommandColumn>
+                        Действия
+                    </DataGridCommandColumn>
+                    <CommandCell>
+                        @* <Button Color="Color.Danger" Clicked="@(e => DeleteRequest(e))">Удалить</Button> *@
+                    </CommandCell>
+                </DataGridCommandColumn>
+
+                <DataGridColumn TItem="Request" Field="@("user.Username")" Caption="Имя пользователя" />
+                <DataGridColumn TItem="Request" Field="@("user.Name")" Caption="Имя" />
+                <DataGridColumn TItem="Request" Field="@("user.Telegram")" Caption="Телеграм" />
+                <DataGridColumn TItem="Request" Field="@("user.Phone")" Caption="Телефон" />
+                <DataGridColumn TItem="Request" Field="@("user.Address")" Caption="Адрес" />
+                <DataGridColumn TItem="Request" Field="@nameof(Request.dateTime)" Caption="Дата заявки" />
+            </DataGrid>
+        </TabPanel>
+        <TabPanel Name="userManagment">
+            <div class="container">
+                <h3>Управление пользователями</h3>
+                <p>Здесь вы можете управлять пользователями</p>
+                <!-- Добавьте содержимое для управления пользователями здесь -->
+            </div>
+        </TabPanel>
+    </Content>
+</Tabs>
+
+@code {
+    private List<Request> requests = new();
+    private string selectedTab = "requests";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            MD mD = new MD();
+            requests = await Task.Run(() => mD.FindAllRequests());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при загрузке данных заявок: {ex.Message}");
+        }
+    }
+
+    private Task OnSelectedTabChanged(string name)
+    {
+        selectedTab = name;
+        return Task.CompletedTask;
+    }
+
+    private void DeleteRequest(Request request)
+    {
+        // Реализуйте удаление заявки
+    }
+}
+

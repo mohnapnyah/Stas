@@ -42,7 +42,7 @@ namespace FishGuide
             using (var context = new RecipeBookEntities())
             {
                 // Загрузка списка рыб из базы данных
-                var fishList = context.Recipe.ToList();
+                var fishList = context.Word.ToList();
                 // Привязка списка рыб к ListView
                 FishListView.ItemsSource = fishList;
             }
@@ -78,15 +78,15 @@ namespace FishGuide
         {
             if (FishListView.SelectedItem != null)
             {
-                var selectedFish = (Recipe)FishListView.SelectedItem;
+                var selectedFish = (Word)FishListView.SelectedItem;
                 FishName.Text = selectedFish.Name;
                 ShowFishInfo(selectedFish);
             }
         }
-        private void ShowFishInfo(Recipe fish)
+        private void ShowFishInfo(Word fish)
         {
             // Отображение информации о рыбе в TextBlock
-            FishInfoTextBlock.Text = $"Ингридиенты: {fish.Ingredients}\nСложность: {fish.Difficulty} \nСкорость: {fish.Speed} \nОбщая информация: {fish.About}";
+            FishInfoTextBlock.Text = $"\nСложность слова: {fish.Difficulty} \nСкорость освоения: {fish.Speed} \nПеревод: {fish.About}";
         }
 
      
@@ -101,7 +101,7 @@ namespace FishGuide
         {
             if (FishListView.SelectedItem != null)
             {
-                var selectedFish = (Recipe)FishListView.SelectedItem;
+                var selectedFish = (Word)FishListView.SelectedItem;
                 FishName.Text = selectedFish.Name;
                 ShowFishInfo(selectedFish);
             }
@@ -110,18 +110,18 @@ namespace FishGuide
         private void DeleteRecipe_Click(object sender, RoutedEventArgs e)
         {
             // Получение выбранного элемента
-            Recipe selectedFish = (Recipe)FishListView.SelectedItem;
+            Word selectedFish = (Word)FishListView.SelectedItem;
 
             if (selectedFish != null)
             {
                 // Удаление из базы данных
                 using (var dbContext = new RecipeBookEntities()) // Замени на свой контекст базы данных
                 {
-                    var existingFish = dbContext.Recipe.Find(selectedFish.Recipe_id);
+                    var existingFish = dbContext.Word.Find(selectedFish.Word_id);
 
                     if (existingFish != null)
                     {
-                        dbContext.Recipe.Remove(existingFish);
+                        dbContext.Word.Remove(existingFish);
                         dbContext.SaveChanges();
                     }
                 }

@@ -1,0 +1,47 @@
+﻿@page "/application"
+@using Microsoft.AspNetCore.Components.Routing
+
+
+<h3>Форма заявки на поверку счетчиков</h3>
+
+
+@if (isSubmitted)
+{
+    <p>Заявка отправлена: Имя - @model.Name, Описание - @model.Description</p>
+}
+else
+{
+    <form @onsubmit="SubmitForm">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input id="name" class="form-control" @bind="model.Name" />
+        </div>
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" class="form-control" @bind="model.Description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+    </form>
+}
+
+
+
+
+    @code {
+        private ApplicationModel model = new ApplicationModel();
+        private bool isSubmitted = false;
+
+        private void SubmitForm()
+        {
+            // Здесь можно добавить логику для обработки отправки заявки, например, сохранение в базу данных
+            isSubmitted = true;
+        }
+
+        public class ApplicationModel
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+        }
+
+    }
+    

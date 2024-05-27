@@ -1,0 +1,70 @@
+﻿@page "/reviews"
+@using PoverkaEZ.Data
+@inject NavigationManager Navigation
+@inject UserSingleton UserSingleton;
+@using Blazorise.Icons.FontAwesome
+@using Blazorise.Bootstrap
+@using Blazorise
+
+<style>
+    .fa-star {
+        font-size: 24px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <h2>Оставить отзыв</h2>
+
+    @if (UserSingleton.IsAuthenticated)
+    {
+        <div class="form-group">
+            <label for="review">Ваш отзыв:</label>
+            <textarea id="review" @bind="ReviewText" class="form-control"></textarea>
+        </div>
+
+        <button @onclick="SubmitReview" class="btn btn-primary">Отправить отзыв</button>
+
+        <Alert Color="Color.Success" Visible="@ShowSuccessMessage" Dismissable="true" OnDismissed="@(() => ShowSuccessMessage = false)">
+            Отзыв успешно отправлен!
+        </Alert>
+
+        <Alert Color="Color.Danger" Visible="@ShowErrorMessage" Dismissable="true" OnDismissed="@(() => ShowErrorMessage = false)">
+            Произошла ошибка при отправке отзыва. Попробуйте еще раз.
+        </Alert>
+    }
+    else
+    {
+        <p>Пожалуйста, <a href="/app">авторизуйтесь</a>, чтобы оставить отзыв.</p>
+    }
+</div>
+
+@code {
+    private string ReviewText { get; set; }
+    private bool ShowSuccessMessage { get; set; }
+    private bool ShowErrorMessage { get; set; }
+
+    private async Task SubmitReview()
+    {
+        if (string.IsNullOrEmpty(ReviewText))
+        {
+            ShowErrorMessage = true;
+            return;
+        }
+
+        try
+        {
+            MD mD = new MD();
+            User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
+            Feedback review = new Feedback(ReviewText, user); // Assuming Feedback constructor only needs text and user now
+            mD.AddReview(review);
+            ShowSuccessMessage = true;
+            ShowErrorMessage = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при отправке отзыва: {ex.Message}");
+            ShowErrorMessage = true;
+        }
+    }
+}

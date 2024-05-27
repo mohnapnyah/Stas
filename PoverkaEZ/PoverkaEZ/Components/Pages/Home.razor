@@ -1,0 +1,122 @@
+﻿@namespace PoverkaEZ
+@page "/"
+@using Microsoft.AspNetCore.Components
+@using MongoDB.Driver
+@using MongoDB.Bson
+@inject NavigationManager Navigation
+@inject UserSingleton UserSingleton;
+@using Blazorise.Icons.FontAwesome
+@using Blazorise.Bootstrap
+@using Blazorise
+@using PoverkaEZ.Data
+
+<style>
+    /* Стили для главного контейнера */
+    .main-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Стили для заголовка */
+    h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Стили для абзацев с информацией о компании */
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    /* Стили для блока с отзывами */
+    .review-box {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
+
+    /* Стили для кнопки */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 5px;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<PageTitle>Главная</PageTitle>
+
+<div class="main-container">
+    <h1>Добро пожаловать на сайт компании "PoverkaKZN"</h1>
+
+    <p>
+        Мы специализируемся на поверке счетчиков и обеспечиваем высококачественное обслуживание наших клиентов.
+    </p>
+    <p>
+        Наша компания имеет богатый опыт в сфере поверки и гарантирует точность и надежность наших услуг.
+    </p>
+
+    <hr />
+
+    <h2>Отзывы клиентов</h2>
+
+    <div class="review-box">
+        @if (feedbacks != null && feedbacks.Any())
+        {
+            @foreach (var review in feedbacks)
+            {
+                <div class="review">
+                    <h4>@review.user.Name</h4>
+                    <p>@review.fb</p>
+                </div>
+                <hr />
+            }
+        }
+        else
+        {
+            <p>Отзывы клиентов будут отображены здесь.</p>
+        }
+    </div>
+
+    <div class="button-container">
+        <button @onclick="NavigateToRequest" class="btn">Оставить заявку на поверку счетчиков</button>
+        <button @onclick="NavigateToReviewForm" class="btn">Оставить отзыв</button>
+    </div>
+</div>
+
+@code {
+    private List<Feedback> feedbacks { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        MD mD = new MD();
+        feedbacks = mD.GetAllReviews();
+    }
+
+    private void NavigateToRequest()
+    {
+        Navigation.NavigateTo("register");
+    }
+
+    private void NavigateToReviewForm()
+    {
+        Navigation.NavigateTo("/reviews");
+    }
+}

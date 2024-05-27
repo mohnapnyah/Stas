@@ -1,0 +1,144 @@
+﻿@page "/app"
+@using Microsoft.AspNetCore.Components
+@using Microsoft.EntityFrameworkCore
+@inject NavigationManager Navigation
+@using Blazorise.Icons.FontAwesome
+@using Blazorise.Bootstrap
+@using Blazorise
+@using PoverkaEZ.Data
+@inject UserSingleton UserSingleton;
+@namespace PoverkaEZ
+@using PoverkaEZ.Components.Pages
+
+@inject IJSRuntime JsRuntime
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .password-input-container {
+        position: relative;
+    }
+
+    .password-toggle-btn {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .error-message {
+        margin-top: 20px;
+        color: red;
+    }
+</style>
+
+<div class="login-container">
+    <h3>Для того чтобы оставить заявку, нужно авторизоваться</h3>
+
+    <div class="form-group">
+        <label for="username">Логин:</label>
+        <input type="text" id="username" @bind="Username" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Пароль:</label>
+        <div class="password-input-container">
+            <input type="@PasswordInputType" id="password" @bind="PasswordBox" class="form-control" />
+            <button @onclick="TogglePasswordVisibility" class="password-toggle-btn" type="button">@PasswordVisibilityIcon</button>
+        </div>
+    </div>
+
+    <button @onclick="Login" class="btn btn-primary" type="button">Войти</button>
+
+    <p>Если у вас нет аккаунта, <a href="/register">зарегистрируйтесь здесь</a>.</p>
+
+    <Blazorise.Alert Color="Color.Danger" Visible="@ShowErrorMessage" Dismissable="true" OnDismissed="@(() => ShowErrorMessage = false)">
+        Неверный логин или пароль
+    </Blazorise.Alert>
+
+    <Blazorise.Alert Color="Color.Danger" Visible="@ShowDatabaseError" Dismissable="true" OnDismissed="@(() => ShowDatabaseError = false)">
+        Ошибка подключения к базе данных
+    </Blazorise.Alert>
+</div>
+
+@code {
+    private string Username { get; set; } = string.Empty;
+    private string PasswordBox { get; set; } = string.Empty;
+    private bool ShowPassword { get; set; }
+    private bool ShowErrorMessage { get; set; }
+    private bool ShowDatabaseError { get; set; }
+    public User currentUser;
+
+    private string PasswordInputType => ShowPassword ? "text" : "password";
+    private string PasswordVisibilityIcon => ShowPassword ? "👁️" : "👁️‍🗨️";
+
+    private void TogglePasswordVisibility()
+    {
+        ShowPassword = !ShowPassword;
+    }
+
+    private void Login()
+    {
+        try
+        {
+            MD md = new MD();
+            if (Username != string.Empty && PasswordBox != string.Empty)
+            {
+                User user = md.FindUserByLogin(Username);
+                if (user != null && user.Password == PasswordBox)
+                {
+                    ShowErrorMessage = false;
+                    ShowDatabaseError = false;
+                    UserSingleton.CurrentUser = user;
+                    if (Convert.ToInt32(user.Username) == 1)
+                    {
+                        Navigation.NavigateTo("admin");
+                    }
+                    else
+                    {
+                        Navigation.NavigateTo("/cabinet");
+                    }
+                }
+                else
+                {
+                    ShowErrorMessage = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка подключения к базе данных: {ex.Message}");
+            ShowDatabaseError = true;
+        }
+    }
+}

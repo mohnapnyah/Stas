@@ -25,8 +25,8 @@ namespace FishGuide
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Recipe> Recipe { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Word> Word { get; set; }
     }
 }

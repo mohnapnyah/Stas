@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6334bca18197431a954835b4ab02bf2b" Name="Diagram1">
-        <EntityTypeShape EntityType="RecipeBookModel.Recipe" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="3b9a0167d39c496dba0a3622324066bc" Name="Diagram1">
         <EntityTypeShape EntityType="RecipeBookModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RecipeBookModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="RecipeBookModel.FK_User_Recipe" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RecipeBookModel.Word" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="RecipeBookModel.FK_User_Word" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

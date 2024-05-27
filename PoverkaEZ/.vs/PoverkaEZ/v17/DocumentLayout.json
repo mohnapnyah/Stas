@@ -1,0 +1,414 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\reviewsform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\reviewsform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\requestpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\requestpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\autorization.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\autorization.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\adminpanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\adminpanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\cabinet.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\cabinet.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\data\\poverkakzndbcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\data\\poverkakzndbcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\data\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\data\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\registr.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\registr.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\wwwroot\\favicon.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\wwwroot\\favicon.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\data\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\data\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\data\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\data\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\data\\usersingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\data\\usersingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|c:\\users\\airat\\source\\repos\\poverkaez\\poverkaez\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{510885B7-2EF8-4D60-ABC7-6A7E931ED514}|PoverkaEZ\\PoverkaEZ.csproj|solutionrelative:poverkaez\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 115,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Autorization.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Autorization.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\Autorization.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Autorization.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\Autorization.razor",
+              "ViewState": "AQIAACEAAAAAAAAAAAApwFQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:17:02.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdminPanel.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\AdminPanel.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\AdminPanel.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\AdminPanel.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\AdminPanel.razor",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAE0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-15T07:07:43.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RequestPage.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\RequestPage.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\RequestPage.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\RequestPage.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\RequestPage.razor",
+              "ViewState": "AQIAACcAAAAAAAAAAAAgwEcAAABuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-14T19:59:55.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Request.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\Request.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Data\\Request.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\Request.cs",
+              "RelativeToolTip": "PoverkaEZ\\Data\\Request.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T20:18:20.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReviewsForm.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\ReviewsForm.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\ReviewsForm.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\ReviewsForm.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\ReviewsForm.razor",
+              "ViewState": "AQIAABkAAAAAAAAAAAApwEUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T10:03:57.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\App.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\App.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:13:22.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\appsettings.json",
+              "RelativeDocumentMoniker": "PoverkaEZ\\appsettings.json",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\appsettings.json",
+              "RelativeToolTip": "PoverkaEZ\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-14T07:57:56.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Program.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Program.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Program.cs",
+              "RelativeToolTip": "PoverkaEZ\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T08:14:43.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\Home.razor",
+              "ViewState": "AQIAAEQAAAAAAAAAAAApwGMAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:13:25.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Cabinet.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Cabinet.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\Cabinet.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Cabinet.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\Cabinet.razor",
+              "ViewState": "AQIAAA4AAAAAAAAAAAApwDgAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-14T08:37:28.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\_Imports.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:20:53.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\User.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Data\\User.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\User.cs",
+              "RelativeToolTip": "PoverkaEZ\\Data\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T08:17:19.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:21:13.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PoverkaKZNdbcs.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\PoverkaKZNdbcs.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Data\\PoverkaKZNdbcs.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\PoverkaKZNdbcs.cs",
+              "RelativeToolTip": "PoverkaEZ\\Data\\PoverkaKZNdbcs.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAAAE4AAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T13:15:37.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:19:22.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "PoverkaEZ\\wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\wwwroot\\app.css",
+              "RelativeToolTip": "PoverkaEZ\\wwwroot\\app.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-09T09:17:03.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Registr.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Registr.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\Registr.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Registr.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\Registr.razor",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAgwMEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-14T13:30:38.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "favicon.png - PNG [32x32, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, PNG]",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\wwwroot\\favicon.png",
+              "RelativeDocumentMoniker": "PoverkaEZ\\wwwroot\\favicon.png",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\wwwroot\\favicon.png - PNG [32x32, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, PNG]",
+              "RelativeToolTip": "PoverkaEZ\\wwwroot\\favicon.png - PNG [32x32, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-05-27T05:38:36.701Z",
+              "EditorCaption": " - PNG [32x32, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Routes.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Routes.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:13:20.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Error.razor",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Error.razor",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Components\\Pages\\Error.razor",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Components\\Pages\\Error.razor",
+              "RelativeToolTip": "PoverkaEZ\\Components\\Pages\\Error.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T08:44:35.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserSingleton.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\UserSingleton.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Data\\UserSingleton.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\UserSingleton.cs",
+              "RelativeToolTip": "PoverkaEZ\\Data\\UserSingleton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T19:40:16.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\Feedback.cs",
+              "RelativeDocumentMoniker": "PoverkaEZ\\Data\\Feedback.cs",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\Data\\Feedback.cs",
+              "RelativeToolTip": "PoverkaEZ\\Data\\Feedback.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:53:56.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "PoverkaEZ\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\airat\\source\\repos\\PoverkaEZ\\PoverkaEZ\\appsettings.Development.json",
+              "RelativeToolTip": "PoverkaEZ\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-14T08:21:32.758Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,8 +18,8 @@ namespace FishGuide
         public string Login { get; set; }
         public string Password { get; set; }
         public string Nickname { get; set; }
-        public Nullable<int> Recipe_id { get; set; }
+        public Nullable<int> Word_id { get; set; }
     
-        public virtual Recipe Recipe { get; set; }
+        public virtual Word Word { get; set; }
     }
 }

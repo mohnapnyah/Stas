@@ -41,7 +41,7 @@ namespace FishGuide
                 }
 
                 // Создание нового объекта Fish
-                Recipe newFish = new Recipe
+                Word newFish = new Word
                 {
                     Name = name,
                     Ingredients = tackle,
@@ -53,7 +53,7 @@ namespace FishGuide
                 // Сохранение в базе данных
                 using (var dbContext = new RecipeBookEntities()) // Замени на свой контекст базы данных
                 {
-                    dbContext.Recipe.Add(newFish);
+                    dbContext.Word.Add(newFish);
                     dbContext.SaveChanges();
                 }
 

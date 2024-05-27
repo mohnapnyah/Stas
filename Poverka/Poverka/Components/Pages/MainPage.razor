@@ -1,0 +1,16 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@inject NavigationManager Navigation;
+
+<h1>Добро пожаловать на сайт для заявок</h1>
+
+<p>Для оставления заявки на поверку счетчиков, <button @onclick="GoToApplicationForm">нажмите здесь</button>.</p>
+
+@code {
+    private void GoToApplicationForm()
+    {
+        Navigation.NavigateTo("/application");
+    }
+}

@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="RecipeBookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Recipe">
-    <Key>
-      <PropertyRef Name="Recipe_id" />
-    </Key>
-    <Property Name="Recipe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Ingredients" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Difficulty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="About" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_User_Recipe" FromRole="Recipe" ToRole="User" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -30,27 +18,39 @@
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Recipe_id" Type="Int32" />
-    <NavigationProperty Name="Recipe" Relationship="Self.FK_User_Recipe" FromRole="User" ToRole="Recipe" />
+    <Property Name="Word_id" Type="Int32" />
+    <NavigationProperty Name="Word" Relationship="Self.FK_User_Word" FromRole="User" ToRole="Word" />
   </EntityType>
-  <Association Name="FK_User_Recipe">
-    <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+  <EntityType Name="Word">
+    <Key>
+      <PropertyRef Name="Word_id" />
+    </Key>
+    <Property Name="Word_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ingredients" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Difficulty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="About" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Word" FromRole="Word" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_User_Word">
+    <End Role="Word" Type="Self.Word" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Recipe">
-        <PropertyRef Name="Recipe_id" />
+      <Principal Role="Word">
+        <PropertyRef Name="Word_id" />
       </Principal>
       <Dependent Role="User">
-        <PropertyRef Name="Recipe_id" />
+        <PropertyRef Name="Word_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="RecipeBookEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Recipe" EntityType="Self.Recipe" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="User" EntityType="Self.User" />
-    <AssociationSet Name="FK_User_Recipe" Association="Self.FK_User_Recipe">
-      <End Role="Recipe" EntitySet="Recipe" />
+    <EntitySet Name="Word" EntityType="Self.Word" />
+    <AssociationSet Name="FK_User_Word" Association="Self.FK_User_Word">
+      <End Role="Word" EntitySet="Word" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>

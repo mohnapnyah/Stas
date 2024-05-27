@@ -1,0 +1,194 @@
+﻿@page "/register"
+@using Microsoft.AspNetCore.Components
+@using MongoDB.Driver
+@using MongoDB.Bson;
+@inject NavigationManager Navigation
+@using System.ComponentModel.DataAnnotations
+
+<style>
+    .register-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .password-input-container {
+        position: relative;
+    }
+
+    .password-toggle-btn {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .message {
+        margin-top: 20px;
+        color: green;
+    }
+
+    .error-message {
+        margin-top: 20px;
+        color: red;
+    }
+</style>
+
+<div class="register-container">
+    <h3>Регистрация</h3>
+
+    <EditForm Model="registrationModel" OnValidSubmit="RegisterUser">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="username">Логин:</label>
+            <InputText id="username" @bind-Value="registrationModel.Username" class="form-control" />
+            <ValidationMessage For="@(() => registrationModel.Username)" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <div class="password-input-container">
+                <InputText id="password" type="@PasswordInputType" @bind-Value="registrationModel.Password" class="form-control" />
+                <button @onclick="TogglePasswordVisibility" type="button" class="password-toggle-btn">@PasswordVisibilityIcon</button>
+            </div>
+            <ValidationMessage For="@(() => registrationModel.Password)" />
+        </div>
+
+        <div class="form-group">
+            <label for="telegram">Телеграм:</label>
+            <InputText id="telegram" @bind-Value="registrationModel.Telegram" class="form-control" />
+            <ValidationMessage For="@(() => registrationModel.Telegram)" />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <InputText id="name" @bind-Value="registrationModel.Name" class="form-control" />
+            <ValidationMessage For="@(() => registrationModel.Name)" />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Номер телефона:</label>
+            <InputText id="phone" @bind-Value="registrationModel.Phone" class="form-control" />
+            <ValidationMessage For="@(() => registrationModel.Phone)" />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Адрес:</label>
+            <InputText id="address" @bind-Value="registrationModel.Address" class="form-control" />
+            <ValidationMessage For="@(() => registrationModel.Address)" />
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Регистрация</button>
+            <button @onclick="ClearFields" type="button" class="btn btn-secondary">Очистить</button>
+        </div>
+
+        @if (ShowSuccessMessage)
+        {
+            <div class="message">Регистрация прошла успешно!</div>
+        }
+        else if (ShowErrorMessage)
+        {
+            <div class="error-message">Ошибка при регистрации. Попробуйте снова.</div>
+        }
+    </EditForm>
+</div>
+
+@code {
+    private RegistrationModel registrationModel = new();
+
+    private bool ShowPassword { get; set; }
+    private bool ShowErrorMessage { get; set; }
+    private bool ShowSuccessMessage { get; set; }
+
+    private string PasswordInputType => ShowPassword ? "text" : "password";
+    private string PasswordVisibilityIcon => ShowPassword ? "👁️" : "👁️‍🗨️";
+
+    private void RegisterUser()
+    {
+        try
+        {
+            MD mongoDB = new MD();
+            var user = new User(registrationModel.Username, registrationModel.Password, registrationModel.Telegram, registrationModel.Name, registrationModel.Phone, registrationModel.Address);
+            mongoDB.AddUser(user);
+            ShowErrorMessage = false;
+            ShowSuccessMessage = true;
+            Navigation.NavigateTo("app");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при регистрации: {ex.Message}");
+            ShowSuccessMessage = false;
+            ShowErrorMessage = true;
+        }
+    }
+
+    private void ClearFields()
+    {
+        registrationModel = new();
+        ShowErrorMessage = false;
+        ShowSuccessMessage = false;
+        StateHasChanged();
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        ShowPassword = !ShowPassword;
+        StateHasChanged();
+    }
+
+    public class RegistrationModel
+    {
+        [Required(ErrorMessage = "Логин обязателен")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "Пароль обязателен")]
+        public string Password { get; set; }
+
+        public string Telegram { get; set; }
+
+        [Required(ErrorMessage = "Имя обязательно")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Номер телефона обязателен")]
+        public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Адрес обязателен")]
+        public string Address { get; set; }
+    }
+}

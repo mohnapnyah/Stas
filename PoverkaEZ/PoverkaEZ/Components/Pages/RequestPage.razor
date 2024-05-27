@@ -1,0 +1,86 @@
+﻿@page "/request"
+@inject NavigationManager Navigation
+@using Blazorise
+@using Blazorise.Bootstrap
+@using Blazorise.Icons.FontAwesome
+@using PoverkaEZ.Data
+@inject UserSingleton UserSingleton
+
+
+<PageTitle>Оставить заявку</PageTitle>
+
+<div class="container">
+    <h3>Здесь вы можете оставить заявку</h3>
+    <p>Выберите дату и время для вашей заявки</p>
+
+    <div class="form-group">
+        <label for="date">Дата:</label>
+        <InputDate @bind-Value="SelectedDate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Время:</label>
+        <div>
+            @foreach (var time in AvailableTimes)
+            {
+                <Button Color="Color.Secondary" Clicked="() => SelectTime(time)" class="m-1">@time</Button>
+            }
+        </div>
+    </div>
+
+    <Button Color="Color.Primary" Clicked="SubmitRequest">Отправить заявку</Button>
+
+    <Alert Color="Color.Success" Visible="@ShowSuccessMessage" Dismissable="true" OnDismissed="@(() => ShowSuccessMessage = false)">
+        Заявка успешно отправлена!
+    </Alert>
+
+    <Alert Color="Color.Danger" Visible="@ShowErrorMessage" Dismissable="true" OnDismissed="@(() => ShowErrorMessage = false)">
+        Произошла ошибка при отправке заявки. Попробуйте еще раз.
+    </Alert>
+</div>
+
+@code {
+    private DateTime? SelectedDate { get; set; } = DateTime.Today; // Установим значение по умолчанию на сегодня
+    private string SelectedTime { get; set; }
+    private bool ShowSuccessMessage { get; set; }
+    private bool ShowErrorMessage { get; set; }
+
+    private List<string> AvailableTimes = new()
+    {
+        "10:00", "12:00", "14:00", "16:00", "18:00"
+    };
+
+    private void SelectTime(string time)
+    {
+        SelectedTime = time;
+    }
+
+    private async Task SubmitRequest()
+    {
+        if (SelectedDate == null || string.IsNullOrEmpty(SelectedTime))
+        {
+            ShowErrorMessage = true;
+            return;
+        }
+
+        try
+        {
+            MD mD = new MD();
+            User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
+
+            // Объединяем дату и время
+            DateTime dateTime = DateTime.Parse($"{SelectedDate.Value.ToString("yyyy-MM-dd")} {SelectedTime}");
+            dateTime = dateTime.ToLocalTime();
+            Request request = new Request(dateTime, user, "Принята в обработку");
+            mD.AddURequest(request);
+
+            ShowSuccessMessage = true;
+            ShowErrorMessage = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при отправке заявки: {ex.Message}");
+            ShowErrorMessage = true;
+        }
+    }
+}
