@@ -124,6 +124,10 @@
                     {
                         Navigation.NavigateTo("admin");
                     }
+                    else if(user.Role == "Монтажник")
+                    {
+                        Navigation.NavigateTo("/brigade");
+                    }
                     else
                     {
                         Navigation.NavigateTo("/cabinet");

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bZpsUpChVA70n0IJm69s9kaA3bnhGSfxt/3Pwal4XIrMTFXp17jXp7DnRxtoq/xAxgQpNCnDHquDvwUJcNScDw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\airat\\source\\repos\\bot test\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\airat\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\airat\\.nuget\\packages\\telegram.bot\\19.0.0\\telegram.bot.19.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

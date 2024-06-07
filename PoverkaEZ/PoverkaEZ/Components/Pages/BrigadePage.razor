@@ -1,0 +1,70 @@
+﻿@page "/brigade"
+@namespace PoverkaEZ
+@inject NavigationManager Navigation
+@using PoverkaEZ.Data
+@using PoverkaEZ.Components.Pages
+@using Blazorise
+@using Blazorise.DataGrid
+@using Blazorise.Bootstrap
+@using Blazorise.Icons.FontAwesome
+@using Blazorise.Components
+@using PoverkaEZ.Data
+@inject UserSingleton UserSingleton
+
+<h3>Заявка бригады</h3>
+
+@if (requests == null)
+{
+    <p>Загрузка...</p>
+}
+else
+{
+    <DataGrid TItem="Request" Data="@requests">
+        <DataGridColumns>
+            <DataGridColumn TItem="Request" Field="@("user.Username")" Caption="Имя пользователя" />
+            <DataGridColumn TItem="Request" Field="@("user.Address")" Caption="Адрес" />
+            <DataGridColumn TItem="Request" Field="@("user.Phone")" Caption="Телефон" />
+            <DataGridColumn TItem="Request" Field="@nameof(Request.dateTime)" Caption="Дата и время" />
+            <DataGridColumn TItem="Request" Caption="Действие">
+                <DisplayTemplate>
+                    @if (context.status != "Заявка отработана")
+                    {
+                        <Button Color="Color.Primary" Clicked="@(() => MarkRequestAsCompleted(context))">Завершить</Button>
+                    }
+                    else
+                    {
+                        <span class="text-success">Выполнено</span>
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+        </DataGridColumns>
+    </DataGrid>
+}
+
+@code {
+    private List<Request> requests = new List<Request>();
+    private List<Brigade> bigBrigade;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MD mD = new MD();
+        bigBrigade = mD.FindBrigadeByUser(UserSingleton.CurrentUser.Username);
+        Brigade useBrigade = bigBrigade[0];
+        requests.AddRange(useBrigade.brigadeWork);
+    }
+
+    private async Task MarkRequestAsCompleted(Request request)
+    {
+        MD mD = new MD();
+        request.status = "Заявка отработана";
+        mD.ReplaceRequest(request.id,request);
+        Brigade brigade = bigBrigade[0];
+        brigade.brigadeWork.Remove(request);
+        mD.ReplaceBrigade(brigade.name, brigade);
+        requests.Remove(request);
+        User user = request.user;
+        TelegramBotService telegramBotService = new TelegramBotService();
+        await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка выполнена! Если вы хотите оставить отзыв, то можете сделать это на нашем сайте! Спасибо за обращение");
+        StateHasChanged(); // Обновить интерфейс
+    }
+}

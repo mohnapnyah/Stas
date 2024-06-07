@@ -6,6 +6,11 @@
 @using PoverkaEZ.Data
 @inject UserSingleton UserSingleton
 
+@using Telegram.Bot;
+@using Telegram.Bot.Args;
+@using Telegram.Bot.Types.Enums;
+@using Telegram.Bot.Polling;
+@using Telegram.Bot.Exceptions;
 
 <PageTitle>Оставить заявку</PageTitle>
 
@@ -44,6 +49,7 @@
     private string SelectedTime { get; set; }
     private bool ShowSuccessMessage { get; set; }
     private bool ShowErrorMessage { get; set; }
+    public int idCount;
 
     private List<string> AvailableTimes = new()
     {
@@ -67,13 +73,15 @@
         {
             MD mD = new MD();
             User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
-
             // Объединяем дату и время
             DateTime dateTime = DateTime.Parse($"{SelectedDate.Value.ToString("yyyy-MM-dd")} {SelectedTime}");
             dateTime = dateTime.ToLocalTime();
-            Request request = new Request(dateTime, user, "Принята в обработку");
+            Random rnd = new();
+            idCount = rnd.Next(1, 300);
+            Request request = new Request(dateTime, user, "Принята в обработку", idCount);
             mD.AddURequest(request);
-
+            TelegramBotService telegramBotService = new TelegramBotService();
+            await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка принята в обработку, спасибо за ваше обращение в нашу компанию! ");
             ShowSuccessMessage = true;
             ShowErrorMessage = false;
         }

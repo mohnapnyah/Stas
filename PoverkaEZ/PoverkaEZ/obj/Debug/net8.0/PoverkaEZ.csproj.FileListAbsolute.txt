@@ -161,6 +161,10 @@ C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Microsoft.Exten
 C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Microsoft.JSInterop.dll
 C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Blazorise.Bootstrap.dll
 C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Blazorise.DataGrid.dll
-C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
-C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
-C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\MudBlazor.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Polly.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Polly.Extensions.Http.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Telegram.Bot.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Telegram.Bots.dll
+C:\Users\airat\source\repos\PoverkaEZ\PoverkaEZ\bin\Debug\net8.0\Telegram.Bots.Extensions.Polling.dll

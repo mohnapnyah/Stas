@@ -8,26 +8,19 @@
 @using Blazorise.Bootstrap
 @using Blazorise.Icons.FontAwesome
 @using Blazorise.Components
+
 <h3>Панель администратора</h3>
-<Tabs SelectedTab="@selectedTab" OnSelectedTabChanged="@OnSelectedTabChanged">
+<Tabs @bind-SelectedTab="selectedTab" OnSelectedTabChanged="@OnSelectedTabChanged">
     <Items>
         <Tab Name="requests">Заявки</Tab>
-        <Tab Name="userManagment">Сотрудники</Tab>
-        <Tab Name="messages">Пользователи</Tab>
+        <Tab Name="userManagement">Пользователи</Tab>
+        <Tab Name="Employee">Сотрудники</Tab>
     </Items>
     <Content>
         <TabPanel Name="requests">
             <p>Здесь отображаются все заявки</p>
+            <button class="btn btn-primary mb-2" @onclick="OpenAssignTeamModal">Назначить бригаду</button>
             <DataGrid TItem="Request" Data="@requests" AutoGenerateColumns="false" Striped="true" Hoverable="true">
-                <DataGridCommandColumn TItem="Request">
-                    <DataGridCommandColumn>
-                        Действия
-                    </DataGridCommandColumn>
-                    <CommandCell>
-                        @* <Button Color="Color.Danger" Clicked="@(e => DeleteRequest(e))">Удалить</Button> *@
-                    </CommandCell>
-                </DataGridCommandColumn>
-
                 <DataGridColumn TItem="Request" Field="@("user.Username")" Caption="Имя пользователя" />
                 <DataGridColumn TItem="Request" Field="@("user.Name")" Caption="Имя" />
                 <DataGridColumn TItem="Request" Field="@("user.Telegram")" Caption="Телеграм" />
@@ -35,20 +28,205 @@
                 <DataGridColumn TItem="Request" Field="@("user.Address")" Caption="Адрес" />
                 <DataGridColumn TItem="Request" Field="@nameof(Request.dateTime)" Caption="Дата заявки" />
             </DataGrid>
+            
         </TabPanel>
-        <TabPanel Name="userManagment">
+        <TabPanel Name="userManagement">
             <div class="container">
                 <h3>Управление пользователями</h3>
                 <p>Здесь вы можете управлять пользователями</p>
-                <!-- Добавьте содержимое для управления пользователями здесь -->
+                <select @bind="sortField" class="form-control mb-2">
+                    <option value="Username">Имя пользователя</option>
+                    <option value="Name">Имя</option>
+                    <option value="Address">Адрес</option>
+                </select>
+                <button class="btn btn-primary mb-2" @onclick="SortUsers">Сортировать</button>
+                <DataGrid TItem="User" Data="@filteredUsers" AutoGenerateColumns="false" Striped="true" Hoverable="true">
+                    <DataGridColumn TItem="User" Field="@nameof(User.Username)" Caption="Имя пользователя" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Name)" Caption="Имя" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Telegram)" Caption="Телеграм" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Phone)" Caption="Телефон" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Address)" Caption="Адрес" />
+                </DataGrid>
+            </div>
+        </TabPanel>
+        <TabPanel Name="Employee">
+            <div class="container">
+                <h3>Управление сотрудниками</h3>
+                <button class="btn btn-primary mb-2" @onclick="OpenCreateEmployeeModal">Добавить сотрудника</button>
+                <button class="btn btn-secondary mb-2 ms-2" @onclick="OpenGenerateTeamModal">Сформировать бригаду</button> <!-- Кнопка с диалоговым окном -->
+                <p>Здесь отображаются все сотрудники</p>
+                <DataGrid TItem="User" Data="@employees" AutoGenerateColumns="false" Striped="true" Hoverable="true">
+                    <DataGridColumn TItem="User" Field="@nameof(User.Username)" Caption="Имя пользователя" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Name)" Caption="Имя" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Telegram)" Caption="Телеграм" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Phone)" Caption="Телефон" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Address)" Caption="Адрес" />
+                    <DataGridColumn TItem="User" Field="@nameof(User.Role)" Caption="Должность" />
+                </DataGrid>
             </div>
         </TabPanel>
     </Content>
 </Tabs>
 
+@if (isCreateEmployeeModalVisible)
+{
+    <div class="modal show" tabindex="-1" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить сотрудника</h5>
+                    <button type="button" class="btn-close" @onclick="CloseCreateEmployeeModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="username" @bind-value="employeeRegistrationModel.Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" @bind="employeeRegistrationModel.Password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telegram" class="form-label">Телеграм</label>
+                        <input type="text" class="form-control" id="telegram" @bind="employeeRegistrationModel.Telegram">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" @bind="employeeRegistrationModel.Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Должность</label>
+                        <input type="text" class="form-control" id="position" @bind="employeeRegistrationModel.Role">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Телефон</label>
+                        <input type="text" class="form-control" id="phone" @bind="employeeRegistrationModel.Phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Адрес</label>
+                        <input type="text" class="form-control" id="address" @bind="employeeRegistrationModel.Address">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseCreateEmployeeModal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" @onclick="CreateEmployee">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@if (isGenerateTeamModalVisible)
+{
+    <div class="modal show" tabindex="-1" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Сформировать бригаду</h5>
+                    <button type="button" class="btn-close" @onclick="CloseGenerateTeamModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="teamName" class="form-label">Название бригады</label>
+                        <input type="text" class="form-control" id="teamName" @bind="teamName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="employee1" class="form-label">Выбор сотрудника 1</label>
+                        <select class="form-select" id="employee1" @bind="selectedEmployeeUsername1">
+                            <option value="">Выберите сотрудника</option>
+                            @foreach (var employee in employees)
+                            {
+                                if (employee.Username != selectedEmployeeUsername2)
+                                {
+                                    <option value="@employee.Username">@employee.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employee2" class="form-label">Выбор сотрудника 2</label>
+                        <select class="form-select" id="employee2" @bind="selectedEmployeeUsername2">
+                            <option value="">Выберите сотрудника</option>
+                            @foreach (var employee in employees)
+                            {
+                                if (employee.Username != selectedEmployeeUsername1)
+                                {
+                                    <option value="@employee.Username">@employee.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseGenerateTeamModal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" @onclick="SaveTeam">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@if (isAssignTeamModalVisible)
+{
+    <div class="modal show" tabindex="-1" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Назначить бригаду</h5>
+                    <button type="button" class="btn-close" @onclick="CloseAssignTeamModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="request" class="form-label">Выбор заявки</label>
+                        <select class="form-select" id="request" @bind="selectedRequestId">
+                            <option value="">Выберите заявку</option>
+                            @foreach (var request in requests)
+                            {
+                                <option value="@request.id">@request.id - @request.user.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="brigade" class="form-label">Выбор бригады</label>
+                        <select class="form-select" id="brigade" @bind="selectedBrigadeId">
+                            <option value="">Выберите бригаду</option>
+                            @foreach (var brigade in brigades)
+                            {
+                                <option value="@brigade.name">@brigade.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseAssignTeamModal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" @onclick="AssignTeam">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
 @code {
+    private EmployeeRegistrationModel employeeRegistrationModel = new();
     private List<Request> requests = new();
+    private List<User> users = new();
+    private List<User> filteredUsers = new();
+    private List<User> employees = new(); // Добавлено для сотрудников
+    private List<Brigade> brigades = new(); // Добавлено для бригад
     private string selectedTab = "requests";
+    private string sortField = "Username";
+
+    private string teamName;
+    private string selectedEmployeeUsername1;
+    private string selectedEmployeeUsername2;
+    private string selectedRequestId; // Добавлено для выбора заявки
+    private string selectedBrigadeId; // Добавлено для выбора бригады
+
+    private bool isCreateEmployeeModalVisible = false;
+    private bool isGenerateTeamModalVisible = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -56,10 +234,14 @@
         {
             MD mD = new MD();
             requests = await Task.Run(() => mD.FindAllRequests());
+            users = await Task.Run(() => mD.FindAllUsers());
+            employees = await Task.Run(() => mD.FindAllEmployees());
+            brigades = await Task.Run(() => mD.FindAllBrigades()); // Загрузить список бригад
+            FilterUsers();
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Ошибка при загрузке данных заявок: {ex.Message}");
+            Console.WriteLine($"Ошибка при загрузке данных: {ex.Message}");
         }
     }
 
@@ -69,9 +251,120 @@
         return Task.CompletedTask;
     }
 
+    private void FilterUsers()
+    {
+        filteredUsers = users;
+        SortUsers();
+    }
+
+    private void SortUsers()
+    {
+        filteredUsers = sortField switch
+        {
+            "Username" => filteredUsers.OrderBy(u => u.Username).ToList(),
+            "Name" => filteredUsers.OrderBy(u => u.Name).ToList(),
+            "Address" => filteredUsers.OrderBy(u => u.Address).ToList(),
+            _ => filteredUsers
+        };
+        StateHasChanged();
+    }
+
     private void DeleteRequest(Request request)
     {
         // Реализуйте удаление заявки
     }
-}
 
+    private void DeleteUser(User user)
+    {
+        // Реализуйте удаление пользователя
+    }
+
+    private void OpenCreateEmployeeModal()
+    {
+        isCreateEmployeeModalVisible = true;
+    }
+
+    private void CloseCreateEmployeeModal()
+    {
+        isCreateEmployeeModalVisible = false;
+    }
+
+    private void CreateEmployee()
+    {
+        MD mD = new MD();
+        User user = new User(employeeRegistrationModel.Username, employeeRegistrationModel.Password, employeeRegistrationModel.Telegram, employeeRegistrationModel.Name, employeeRegistrationModel.Phone, employeeRegistrationModel.Address)
+            {
+                Role = employeeRegistrationModel.Role
+            };
+        mD.AddUser(user);
+        employees.Add(user);
+        CloseCreateEmployeeModal();
+    }
+
+    private void DeleteEmployee(User employee)
+    {
+        // Реализуйте удаление сотрудника
+    }
+
+    private void OpenGenerateTeamModal()
+    {
+        isGenerateTeamModalVisible = true;
+    }
+
+    private void CloseGenerateTeamModal()
+    {
+        isGenerateTeamModalVisible = false;
+    }
+
+    private void SaveTeam()
+    {
+        var employee1 = employees.FirstOrDefault(e => e.Username == selectedEmployeeUsername1);
+        var employee2 = employees.FirstOrDefault(e => e.Username == selectedEmployeeUsername2);
+
+        if (employee1 != null && employee2 != null)
+        {
+            MD mD = new MD();
+            List<Request> brigadeWork = new List<Request>();
+            Brigade brigade = new Brigade(teamName, employee1, employee2,brigadeWork);
+            mD.AddBrigade(brigade);
+        }
+    }
+
+    private bool isAssignTeamModalVisible = false;
+
+    private void OpenAssignTeamModal()
+    {
+        isAssignTeamModalVisible = true;
+    }
+
+    private void CloseAssignTeamModal()
+    {
+        isAssignTeamModalVisible = false;
+    }
+
+    private async void AssignTeam()
+    {
+        MD mD = new MD();
+        Brigade brigade = mD.FindBrigadeByName(selectedBrigadeId);
+        Request request = mD.FindRequestByID(Convert.ToInt32(selectedRequestId));
+        brigade.brigadeWork.Add(request);
+        request.status = "Передана в исполнение";
+        mD.ReplaceRequest(Convert.ToInt32(selectedRequestId), request);
+        mD.ReplaceBrigade(selectedBrigadeId, brigade);
+        User user = request.user;
+        TelegramBotService telegramBotService = new TelegramBotService(); 
+        await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка передана на исполнение, ожидайте рабочих" + $" {request.dateTime}");
+        CloseAssignTeamModal();
+    }
+
+    public class EmployeeRegistrationModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Telegram { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Role { get; set; }
+        public string Address { get; set; }
+    }
+}

@@ -5,6 +5,8 @@ using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using PoverkaEZ.Data;
+using Microsoft.Extensions.DependencyInjection;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddBlazorise()
 .AddBootstrapProviders()
 .AddFontAwesomeIcons();
+builder.Services.AddHostedService<TelegramBotService>(); ;
 
 builder.Services.AddSingleton<UserSingleton>();
 var app = builder.Build();

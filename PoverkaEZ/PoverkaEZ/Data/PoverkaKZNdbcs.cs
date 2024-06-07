@@ -58,11 +58,11 @@ public class MD
 
         return validRequests;
     }
-     public  void ReplaceUser(string username, User user)
-        {
-            var collection = database.GetCollection<User>("User");
-            collection.ReplaceOne(x => x.Username == username, user);
-        }
+    public void ReplaceUser(string username, User user)
+    {
+        var collection = database.GetCollection<User>("User");
+        collection.ReplaceOne(x => x.Username == username, user);
+    }
     public List<Request> FindRequestsByUser(string username)
     {
         var collection = database.GetCollection<Request>("Request");
@@ -78,5 +78,72 @@ public class MD
     {
         var collection = database.GetCollection<Feedback>("Feedback");
         return collection.Find(x => true).ToList();
+    }
+    public List<User> FindAllUsers()
+    {
+        var collection = database.GetCollection<User>("User");
+        return collection.Find(x => true).ToList();
+    }
+    public void RemoveUser(string username)
+    {
+        var collection = database.GetCollection<User>("User");
+        collection = (IMongoCollection<User>)collection.DeleteOne(x => x.Username == username);
+
+    }
+    public List<User> FindAllEmployees()
+    {
+        var collection = database.GetCollection<User>("User");
+        return collection.Find(x => x.Role == "Монтажник").ToList();
+    }
+
+    public void AddEmployee(User user)
+    {
+        var collection = database.GetCollection<User>("Employee");
+        collection.InsertOne(user);
+    }
+    public void AddBrigade(Brigade brigade)
+    {
+        var collection = database.GetCollection<Brigade>("Brigade");
+        collection.InsertOne(brigade);
+    }
+    public List<Brigade> FindAllBrigades()
+    {
+        var collection = database.GetCollection<Brigade>("Brigade");
+        return collection.Find(x => true).ToList();
+    }
+
+    public Brigade FindBrigadeByName(string name)
+    {
+        var collection = database.GetCollection<Brigade>("Brigade");
+        return collection.Find(x => x.name == name).FirstOrDefault();
+    }
+    public Request FindRequestByID(int id)
+    {
+        var collection = database.GetCollection<Request>("Request");
+        return collection.Find(x => x.id == id).FirstOrDefault();
+    }
+
+    public void ReplaceRequest(int id, Request request)
+    {
+        var collection = database.GetCollection<Request>("Request");
+        collection.ReplaceOne(x => x.id == id, request);
+    }
+    public void ReplaceBrigade(string name, Brigade brigade)
+    {
+        var collection = database.GetCollection<Brigade>("Brigade");
+        collection.ReplaceOne(x => x.name == name, brigade);
+    }
+
+    public List<Brigade> FindBrigadeByUser(string Username)
+    {
+        var collection = database.GetCollection<Brigade>("Brigade");
+        var brigade = collection.Find(r => r.brigadeMember.Username == Username || r.secondBrigadeMember.Username == Username).ToList();
+        return brigade;
+    }
+
+    public User FindUserByTelegram(string telegramUsername)
+    {
+        var collection = database.GetCollection<User>("User");
+        return collection.Find(x => x.Telegram == telegramUsername).FirstOrDefault();
     }
 }
