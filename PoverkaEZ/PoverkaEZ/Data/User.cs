@@ -28,4 +28,5 @@ public class User
     public string Phone { get; set; }
     public string Address { get; set; }
     public long chatid { get; set; }
+    public string status { get; set; }
 }

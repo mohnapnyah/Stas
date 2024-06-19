@@ -64,7 +64,7 @@ else
         requests.Remove(request);
         User user = request.user;
         TelegramBotService telegramBotService = new TelegramBotService();
-        await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка выполнена! Если вы хотите оставить отзыв, то можете сделать это на нашем сайте! Спасибо за обращение");
+        await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка выполнена! Если вы хотите оставить отзыв, то можете сделать это на нашем сайте! Спасибо за обращение!");
         StateHasChanged(); // Обновить интерфейс
     }
 }

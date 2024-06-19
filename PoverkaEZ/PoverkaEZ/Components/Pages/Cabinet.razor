@@ -47,6 +47,18 @@
             <DataGridColumns>
                 <DataGridColumn TItem="Request" Field="@nameof(Request.dateTime)" Caption="Дата" />
                 <DataGridColumn TItem="Request" Field="@nameof(Request.status)" Caption="Статус заявки" />
+                <DataGridColumn TItem="Request" Caption="Действия">
+                    <DisplayTemplate>
+                        @if (context.status != "Заявка отменена")
+                        {
+                            <Button Color="Color.Danger" Clicked="@(() => CancelRequest(context))">Завершить</Button>
+                        }
+                        else
+                        {
+                            <span class="text-deny" >Заявка отменена</span>
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
             </DataGridColumns>
         </DataGrid>
     }
@@ -88,5 +100,20 @@
     {
         // Логика отправки заявки на поверку
         Navigation.NavigateTo("request");
+    }
+
+    private async Task CancelRequest(Request request)
+    {
+        try
+        {
+            MD mD = new MD();
+            request.status = "Заявка отменена";
+            mD.RemoveRequestById(request.id);
+            UserRequests.Remove(request);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при отмене заявки: {ex.Message}");
+        }
     }
 }

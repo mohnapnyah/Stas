@@ -9,6 +9,7 @@
 @using Blazorise.Icons.FontAwesome
 @using Blazorise.Components
 
+
 <h3>Панель администратора</h3>
 <Tabs @bind-SelectedTab="selectedTab" OnSelectedTabChanged="@OnSelectedTabChanged">
     <Items>
@@ -135,7 +136,7 @@
                         <label for="employee1" class="form-label">Выбор сотрудника 1</label>
                         <select class="form-select" id="employee1" @bind="selectedEmployeeUsername1">
                             <option value="">Выберите сотрудника</option>
-                            @foreach (var employee in employees)
+                            @foreach (var employee in availableEmployee)
                             {
                                 if (employee.Username != selectedEmployeeUsername2)
                                 {
@@ -148,7 +149,7 @@
                         <label for="employee2" class="form-label">Выбор сотрудника 2</label>
                         <select class="form-select" id="employee2" @bind="selectedEmployeeUsername2">
                             <option value="">Выберите сотрудника</option>
-                            @foreach (var employee in employees)
+                            @foreach (var employee in availableEmployee)
                             {
                                 if (employee.Username != selectedEmployeeUsername1)
                                 {
@@ -182,7 +183,7 @@
                         <label for="request" class="form-label">Выбор заявки</label>
                         <select class="form-select" id="request" @bind="selectedRequestId">
                             <option value="">Выберите заявку</option>
-                            @foreach (var request in requests)
+                            @foreach (var request in availableRequests)
                             {
                                 <option value="@request.id">@request.id - @request.user.Name</option>
                             }
@@ -224,6 +225,8 @@
     private string selectedEmployeeUsername2;
     private string selectedRequestId; // Добавлено для выбора заявки
     private string selectedBrigadeId; // Добавлено для выбора бригады
+    private List<Request> availableRequests = new List<Request>();
+    private List<User> availableEmployee = new List<User>();
 
     private bool isCreateEmployeeModalVisible = false;
     private bool isGenerateTeamModalVisible = false;
@@ -237,6 +240,8 @@
             users = await Task.Run(() => mD.FindAllUsers());
             employees = await Task.Run(() => mD.FindAllEmployees());
             brigades = await Task.Run(() => mD.FindAllBrigades()); // Загрузить список бригад
+            UpdateAvailableRequest();
+            UpdateAvailableUser();
             FilterUsers();
         }
         catch (Exception ex)
@@ -324,6 +329,10 @@
         if (employee1 != null && employee2 != null)
         {
             MD mD = new MD();
+            employee1.status = "В бригаде";
+            employee2.status = "В бригаде";
+            mD.ReplaceUser(employee1.Username, employee1);
+            mD.ReplaceUser(employee2.Username, employee2);
             List<Request> brigadeWork = new List<Request>();
             Brigade brigade = new Brigade(teamName, employee1, employee2,brigadeWork);
             mD.AddBrigade(brigade);
@@ -355,6 +364,31 @@
         TelegramBotService telegramBotService = new TelegramBotService(); 
         await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка передана на исполнение, ожидайте рабочих" + $" {request.dateTime}");
         CloseAssignTeamModal();
+        UpdateAvailableRequest();
+        
+    }
+
+    private void UpdateAvailableRequest()
+    {
+        foreach(var a in requests)
+        {
+            if(a.status == "Принята в обработку")
+            {
+                availableRequests.Add(a);
+            }
+            else{ continue; }
+        }
+    }
+    private void UpdateAvailableUser()
+    {
+        foreach (var a in employees)
+        {
+            if (a.status != "В бригаде")
+            {
+                availableEmployee.Add(a);
+            }
+            else { continue; }
+        }
     }
 
     public class EmployeeRegistrationModel

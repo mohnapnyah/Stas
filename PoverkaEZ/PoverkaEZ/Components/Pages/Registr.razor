@@ -103,7 +103,7 @@
 
         <div class="form-group">
             <label for="phone">Номер телефона:</label>
-            <InputText id="phone" @bind-Value="registrationModel.Phone" class="form-control" />
+            <InputText id="phone" @bind-Value="registrationModel.Phone" class="form-control" minlength="11" maxlength="11" />
             <ValidationMessage For="@(() => registrationModel.Phone)" />
         </div>
 
@@ -183,9 +183,11 @@
         public string Telegram { get; set; }
 
         [Required(ErrorMessage = "Имя обязательно")]
+        [RegularExpression(@"^[а-яА-Яa-zA-Z]+$", ErrorMessage = "Имя может содержать только буквы.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Номер телефона обязателен")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Номер телефона должен содержать 11 символов.")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Адрес обязателен")]

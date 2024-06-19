@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <label for="date">Дата:</label>
-        <InputDate @bind-Value="SelectedDate" class="form-control" />
+        <InputDate @bind-Value="SelectedDate" Min="@MinDate" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -42,6 +42,10 @@
     <Alert Color="Color.Danger" Visible="@ShowErrorMessage" Dismissable="true" OnDismissed="@(() => ShowErrorMessage = false)">
         Произошла ошибка при отправке заявки. Попробуйте еще раз.
     </Alert>
+
+    <Alert Color="Color.Danger" Visible="@ShowDateErrorMessage" Dismissable="true" OnDismissed="@(() => ShowErrorMessage = false)">
+        Выберите сегодняшнюю дату или позднее.
+    </Alert>
 </div>
 
 @code {
@@ -49,7 +53,10 @@
     private string SelectedTime { get; set; }
     private bool ShowSuccessMessage { get; set; }
     private bool ShowErrorMessage { get; set; }
+    private bool ShowDateErrorMessage { get; set; }
     public int idCount;
+
+    private DateTime MinDate => DateTime.Today;
 
     private List<string> AvailableTimes = new()
     {
@@ -71,19 +78,27 @@
 
         try
         {
-            MD mD = new MD();
-            User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
-            // Объединяем дату и время
             DateTime dateTime = DateTime.Parse($"{SelectedDate.Value.ToString("yyyy-MM-dd")} {SelectedTime}");
-            dateTime = dateTime.ToLocalTime();
-            Random rnd = new();
-            idCount = rnd.Next(1, 300);
-            Request request = new Request(dateTime, user, "Принята в обработку", idCount);
-            mD.AddURequest(request);
-            TelegramBotService telegramBotService = new TelegramBotService();
-            await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка принята в обработку, спасибо за ваше обращение в нашу компанию! ");
-            ShowSuccessMessage = true;
-            ShowErrorMessage = false;
+            if (dateTime < DateTime.Now)
+            {
+                ShowDateErrorMessage = true;
+            }
+            else
+            {
+                MD mD = new MD();
+                User user = mD.FindUserByLogin(UserSingleton.CurrentUser.Username);
+                // Объединяем дату и время
+                dateTime = dateTime.ToLocalTime();
+                Random rnd = new();
+                idCount = rnd.Next(1, 300);
+                Request request = new Request(dateTime, user, "Принята в обработку", idCount);
+                mD.AddURequest(request);
+                TelegramBotService telegramBotService = new TelegramBotService();
+                await telegramBotService.SendMessageToChatIdAsync(user.chatid, "Здравствуйте, это бот по поверке, ваша заявка принята в обработку, спасибо за ваше обращение в нашу компанию! ");
+                ShowSuccessMessage = true;
+                ShowErrorMessage = false;
+                ShowDateErrorMessage = false;
+            }
         }
         catch (Exception ex)
         {

@@ -120,7 +120,7 @@
                     ShowErrorMessage = false;
                     ShowDatabaseError = false;
                     UserSingleton.CurrentUser = user;
-                    if (Convert.ToInt32(user.Username) == 1)
+                    if (user.Username == "Admin")
                     {
                         Navigation.NavigateTo("admin");
                     }

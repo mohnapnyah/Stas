@@ -146,4 +146,10 @@ public class MD
         var collection = database.GetCollection<User>("User");
         return collection.Find(x => x.Telegram == telegramUsername).FirstOrDefault();
     }
+    public void RemoveRequestById(int id)
+    {
+        var collection = database.GetCollection<Request>("Request");
+        collection = (IMongoCollection<Request>)collection.DeleteOne(x => x.id == id);
+
+    }
 }
