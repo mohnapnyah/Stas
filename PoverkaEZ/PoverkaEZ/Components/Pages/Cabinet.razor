@@ -51,7 +51,7 @@
                     <DisplayTemplate>
                         @if (context.status != "Заявка отменена")
                         {
-                            <Button Color="Color.Danger" Clicked="@(() => CancelRequest(context))">Завершить</Button>
+                            <Button Color="Color.Danger" Clicked="@(() => CancelRequest(context))">Отменить</Button>
                         }
                         else
                         {

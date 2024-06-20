@@ -243,6 +243,7 @@
             UpdateAvailableRequest();
             UpdateAvailableUser();
             FilterUsers();
+            StateHasChanged();
         }
         catch (Exception ex)
         {
@@ -304,6 +305,7 @@
         mD.AddUser(user);
         employees.Add(user);
         CloseCreateEmployeeModal();
+        StateHasChanged();
     }
 
     private void DeleteEmployee(User employee)
@@ -336,6 +338,11 @@
             List<Request> brigadeWork = new List<Request>();
             Brigade brigade = new Brigade(teamName, employee1, employee2,brigadeWork);
             mD.AddBrigade(brigade);
+            CloseGenerateTeamModal();
+            selectedEmployeeUsername1 = string.Empty;
+            selectedEmployeeUsername2 = string.Empty;
+            teamName = string.Empty;
+            StateHasChanged();
         }
     }
 

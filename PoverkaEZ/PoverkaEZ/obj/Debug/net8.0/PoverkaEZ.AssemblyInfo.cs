@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PoverkaEZ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0461ce913fc1bb7d56233187b38414dc87161054")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c45199b40079eafaa5a1037ad310e358ff7e186e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PoverkaEZ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PoverkaEZ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
